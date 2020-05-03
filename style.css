@@ -23,9 +23,6 @@ body {
 
 .github-link {
   color: white;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
   padding-bottom: 16px;
   font-size: 1.4em;
   text-decoration: none;

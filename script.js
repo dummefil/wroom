@@ -2,6 +2,7 @@ const cursorTime = 500;
 const textTime = 1000;
 const cursor = createCursor();
 const textNode = document.querySelector('.text');
+const codeNode = document.querySelector('.github-link');
 
 function textWriter(node, ms) {
   const text = node.textContent;
@@ -16,19 +17,29 @@ function textWriter(node, ms) {
 
   let textToShow = text;
 
+  let codeNodeHovered = false;
+  codeNode.addEventListener('mouseenter', () => {
+    codeNodeHovered = true;
+  })
+  codeNode.addEventListener('mouseleave', () => {
+    codeNodeHovered = false;
+  })
+
   function reverse() {
     const step = ms / textToShow.length;
     const interval = setInterval(() => {
-      textToShow = textToShow.slice(0, textToShow.length - 1);
-      node.textContent = textToShow;
-      if (textToShow.length === 0) {
-        clearTimeout(interval);
-        if (index > textToShowArray.length - 1) {
-          index = 0;
+      if (!codeNodeHovered) {
+        textToShow = textToShow.slice(0, textToShow.length - 1);
+        node.textContent = textToShow;
+        if (textToShow.length === 0) {
+          clearTimeout(interval);
+          if (index > textToShowArray.length - 1) {
+            index = 0;
+          }
+          textToShow = textToShowArray[index];
+          index++;
+          forward();
         }
-        textToShow = textToShowArray[index];
-        index++;
-        forward();
       }
     }, step)
   }
@@ -39,16 +50,17 @@ function textWriter(node, ms) {
     const copyText = textToShow;
     let currentIndex = 1;
     const interval = setInterval(() => {
-      textToShow = copyText.slice(0, currentIndex);
-      currentIndex++;
-      console.log(currentIndex);
-      node.textContent = textToShow;
-      if (textToShow.length === length) {
-        clearTimeout(interval);
-        const timeout = setTimeout(() => {
-          clearTimeout(timeout);
-          reverse();
-        }, 800)
+      if (!codeNodeHovered) {
+        textToShow = copyText.slice(0, currentIndex);
+        currentIndex++;
+        node.textContent = textToShow;
+        if (textToShow.length === length) {
+          clearTimeout(interval);
+          const timeout = setTimeout(() => {
+            clearTimeout(timeout);
+            reverse();
+          }, 800)
+        }
       }
     }, step)
   }

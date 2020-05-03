@@ -5,14 +5,15 @@ const textNode = document.querySelector('.text');
 
 function textWriter(node, ms) {
   const text = node.textContent;
-  
+
   let index = 0;
   const textToShowArray = [
-    'Dear my dear', 
+    'Hello, im Dmitriy',
+    'Dear my dear',
     'Nothing is absolute',
     'Lorem ipsum dolor'
   ];
-  
+
   let textToShow = text;
 
   function reverse() {
@@ -31,12 +32,12 @@ function textWriter(node, ms) {
       }
     }, step)
   }
-  
+
   function forward() {
     const step = ms / textToShow.length;
     const length = textToShow.length;
     const copyText = textToShow;
-    let currentIndex = 1; 
+    let currentIndex = 1;
     const interval = setInterval(() => {
       textToShow = copyText.slice(0, currentIndex);
       currentIndex++;

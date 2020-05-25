@@ -1,5 +1,5 @@
 # Imitation of text writing
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/dummefil/pen/oNNwgOG](https://codepen.io/dummefil/pen/oNNwgOG).
+A Pen created on CodePen.io. Original URL: [https://dummefil.github.io/wroom/](https://dummefil.github.io/wroom/).
 
 
